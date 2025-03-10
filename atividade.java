@@ -6,6 +6,7 @@ public class atividade {
     public static void main(String[] args) {
 
         int opcao = 0;
+        System.out.println("TESTE");
 
         do {
             System.out.println("Escolha uma das opções: ");
