@@ -6,25 +6,44 @@ public class atividade {
     public static void main(String[] args) {
 
         int opcao = 0;
-        System.out.println("julinha teste");
+        Boolean verificaVetor = false;
+        int vetor[] = {};
+
         do {
             System.out.println("Escolha uma das opções: ");
             menu();
             opcao = read.nextInt();
             System.out.printf("Opção escolhida: %d\n", opcao);
+
+            if (!verificaVetor) {
+                while (opcao != 1) {
+                    System.out.println(
+                            "Selecione a opção 1 para inicializar o vetor antes de usar o restante das funções !");
+                    opcao = read.nextInt();
+                }
+                verificaVetor = true;
+            }
+
             switch (opcao) {
                 case 1:
-                    gerarVetorAleatorio();
+                    vetor = gerarVetorAleatorio();
                     System.out.println("Vetor gerado!\n");
                     break;
                 case 2:
-                    int[] vetor = new int[10];
-                    vetor = gerarVetorAleatorio();
                     imprimirVetor(vetor);
                     break;
                 case 3:
-                    vetor = gerarVetorAleatorio();
-                    achaValor(vetor);
+                    int valorAchado = 0;
+                    int retornoAchaValor = 0;
+                    System.out.print("Escolha um valor para ser encontrado no vetor: ");
+                    valorAchado = read.nextInt();
+                    retornoAchaValor = achaValor(vetor, valorAchado);
+                    if (retornoAchaValor != -1) {
+                        System.out.printf("Índice aonde foi encontrado o valor: %d\n", retornoAchaValor);
+                        System.out.println("O valor foi encontrado!\n");
+                    } else {
+                        System.out.println("O valor escolhido não foi encontrado no vetor!\n");
+                    }
                     break;
                 default:
                     System.out.println("Escolha um número válido!\n");
@@ -43,15 +62,20 @@ public class atividade {
         System.out.println("6. Calcular o percentual dos números ímpares armazenados no vetor;");
         System.out.println("7. Calcula a média centralizada dos números armazenados no vetor;");
         System.out.println(
-                "8. Verificar se dado um valor existe dois números em posições distintas que somados são iguais ao valor informado.");
-
+                "8. Verificar se dado um valor existe dois números em posições distintas que somados são iguais ao valor informado;");
     }
 
     public static int[] gerarVetorAleatorio() {
         Random rand = new Random();
-        int[] vetor = new int[10];
+        int n = 0;
+        int m = 0;
+        System.out.println("Insira o tamanho do vetor: ");
+        n = read.nextInt();
+        System.out.println("Insira o valor máximo para ser gerado o vetor");
+        m = read.nextInt();
+        int[] vetor = new int[n];
         for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = rand.nextInt(100);
+            vetor[i] = rand.nextInt(m);
         }
         return vetor;
     }
@@ -68,24 +92,21 @@ public class atividade {
         }
     }
 
-    public static void achaValor(int[] vetor) {
-        int valorAchado = 0;
+    public static int achaValor(int[] vetor, int valorAchado) {
         boolean verifica = false;
-
-        System.out.print("Escolha um valor para ser encontrado no vetor: ");
-        valorAchado = read.nextInt();
-
+        int indiceAchado = 0;
         for (int i = 0; i < vetor.length; i++) {
             if (valorAchado == vetor[i]) {
+                indiceAchado = i;
                 verifica = true;
+                break;
             }
         }
+
         if (verifica) {
-            System.out.println("O valor foi encontrado!\n");
+            return indiceAchado;
         } else {
-            System.out.println("O valor escolhido não foi encontrado no vetor!\n");
+            return -1;
         }
-
     }
-
 }
