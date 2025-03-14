@@ -163,7 +163,6 @@ public class atividade {
 
     public static boolean posicoesDistintas(int[] vetor, int valorDaSoma) {
         boolean verificaSoma = false;
-        int testeSoma = 0;
         int aux = 0;
         for (int i = 0; i < vetor.length; i++) {
             if (i > 0) {
@@ -172,7 +171,6 @@ public class atividade {
                 vetor[i] = aux;
             }
             for (int j = 0; j < vetor.length - 1; j++) {
-                testeSoma = vetor[0] + vetor[j + 1];
                 if (valorDaSoma == vetor[0] + vetor[j + 1]) {
                     verificaSoma = true;
                     break;
