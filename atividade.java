@@ -45,6 +45,17 @@ public class atividade {
                         System.out.println("O valor escolhido não foi encontrado no vetor!\n");
                     }
                     break;
+                case 7:
+                    double media = 0;
+                    media = mediaCentralizada(vetor);
+                    System.out.printf("Média centralizada = %.2f\n", media);
+                    break;
+                case 8:
+                    int valorDaSoma = 0;
+                    System.out.print("Informe o valor a ser verificado: ");
+                    valorDaSoma = read.nextInt();
+                    System.out.println(posicoesDistintas(vetor, valorDaSoma) + "\n");
+                    break;
                 default:
                     System.out.println("Escolha um número válido!\n");
             }
@@ -53,6 +64,7 @@ public class atividade {
         read.close();
     }
 
+    // Função Menu
     public static void menu() {
         System.out.println("1. Inicializar o vetor com números aleatórios;");
         System.out.println("2. Imprimir o vetor;");
@@ -65,14 +77,14 @@ public class atividade {
                 "8. Verificar se dado um valor existe dois números em posições distintas que somados são iguais ao valor informado;");
     }
 
+    // 1. Função para gerar o vetor aleatoriamente
     public static int[] gerarVetorAleatorio() {
         Random rand = new Random();
         int n = 0;
         int m = 0;
-        System.out.println("Insira o tamanho do vetor: ");
         n = read.nextInt();
-        System.out.println("Insira o valor máximo para ser gerado o vetor");
         m = read.nextInt();
+
         int[] vetor = new int[n];
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = rand.nextInt(m);
@@ -80,6 +92,7 @@ public class atividade {
         return vetor;
     }
 
+    // 2. Função para imprimir o vetor
     public static void imprimirVetor(int[] vetor) {
         System.out.print("Impressão do vetor: [");
         for (int i = 0; i < vetor.length; i++) {
@@ -92,6 +105,7 @@ public class atividade {
         }
     }
 
+    // 3. Função para achar o valor selecionado pelo usuário
     public static int achaValor(int[] vetor, int valorAchado) {
         boolean verifica = false;
         int indiceAchado = 0;
@@ -108,5 +122,64 @@ public class atividade {
         } else {
             return -1;
         }
+    }
+
+    // 7. Função que calcula a média centralizada dos números armazenados no vetor
+    public static double mediaCentralizada(int[] vetor) {
+        double soma = 0;
+        double media = 0;
+        double maiorNumero = 0;
+        double menorNumero = vetor[0];
+
+        for (int i = 0; i < vetor.length; i++) {
+            if (vetor[i] > maiorNumero) {
+                maiorNumero = vetor[i];
+            }
+            if (vetor[i] < menorNumero) {
+                menorNumero = vetor[i];
+            }
+        }
+
+        for (int i = 0; i < vetor.length; i++) {
+            if (vetor[i] == maiorNumero) {
+                vetor[i] = 0;
+            }
+            if (vetor[i] == menorNumero) {
+                vetor[i] = 0;
+            }
+        }
+
+        for (int item : vetor) {
+            soma += item;
+        }
+
+        media = soma / vetor.length;
+
+        return media;
+    }
+
+    // 8. Função verifica se existe dois números em posiões distintas que somados é
+    // igual ao valor informado por parâmetro
+
+    public static boolean posicoesDistintas(int[] vetor, int valorDaSoma) {
+        boolean verificaSoma = false;
+        int aux = 0;
+        for (int i = 0; i < vetor.length; i++) {
+            if (i > 0) {
+                aux = vetor[0];
+                vetor[0] = vetor[i];
+                vetor[i] = aux;
+            }
+            for (int j = 0; j < vetor.length - 1; j++) {
+                if (valorDaSoma == vetor[0] + vetor[j + 1]) {
+                    verificaSoma = true;
+                    break;
+                }
+            }
+            if (verificaSoma) {
+                break;
+            }
+        }
+        return verificaSoma;
     }
 }
