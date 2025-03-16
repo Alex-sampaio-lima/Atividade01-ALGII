@@ -5,7 +5,7 @@ public class atividade {
 
     public static void main(String[] args) {
 
-        /* Entrega a Atividade 1 - Algoritmos e Programação II
+        // Entrega a Atividade 1 - Algoritmos e Programação II
         int opcao = 0;
         Boolean verificaVetor = false;
         int vetor[] = {};
