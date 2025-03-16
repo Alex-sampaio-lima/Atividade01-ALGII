@@ -4,7 +4,7 @@ Entrega a Atividade 1 - Algoritmos e Programação II
 Nós,
 
 Nome completo: Alexsander Sampaio Lima
-Nome completo: Ana  Julia Ferreira Lima
+Nome completo: Ana Julia Ferreira Lima
 Nome completo: Sthephany Viana da Silva
 
 declaramos que
