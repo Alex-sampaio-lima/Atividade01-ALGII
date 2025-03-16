@@ -1,3 +1,20 @@
+/*
+Entrega a Atividade 1 - Algoritmos e Programação II
+
+Nós,
+
+Nome completo: Alexsander Sampaio Lima
+Nome completo: Ana Julia Ferreira Lima
+Nome completo: Sthephany Viana da Silva
+
+declaramos que
+
+todas as respostas são fruto de nosso próprio trabalho,
+não copiamos respostas de colegas externos à equipe,
+não disponibilizamos nossas respostas para colegas externos ao grupo e
+não realizamos quaisquer outras atividades desonestas para nos beneficiar ou prejudicar outros.
+*/
+
 import java.util.*;
 
 public class atividade {
@@ -46,10 +63,16 @@ public class atividade {
                         System.out.println("O valor escolhido não foi encontrado no vetor!\n");
                     }
                     break;
+                case 4:
+                    System.out.printf("O maior número do vetor é: %d\n\n", maiorValor(vetor));
+                    break;
+                case 5:
+                    System.out.printf("A média dos números pares do vetor é: %.2f\n\n", mediaPares(vetor));
+                    break;
                 case 7:
                     double media = 0;
                     media = mediaCentralizada(vetor);
-                    System.out.printf("Média centralizada = %.2f\n", media);
+                    System.out.printf("Média centralizada = %.2f\n\n", media);
                     break;
                 case 8:
                     int valorDaSoma = 0;
@@ -67,6 +90,7 @@ public class atividade {
 
     // Função Menu
     public static void menu() {
+        System.out.println("0. Finalizar o programa;");
         System.out.println("1. Inicializar o vetor com números aleatórios;");
         System.out.println("2. Imprimir o vetor;");
         System.out.println("3. Verificar se um determinado número está contido no vetor;");
@@ -124,6 +148,37 @@ public class atividade {
             return -1;
         }
     }
+
+    // 4. Buscar o maior número armazenado no vetor;
+    public static int maiorValor(int[] vetor) {
+        int maior = vetor[0];
+
+        for (int i = 1; i < vetor.length; i++) {
+            if (vetor[i] > maior) {
+                maior = vetor[i];
+            }
+        }
+        return maior;
+    }
+
+    // 5. Calcular a média dos números pares armazenados no vetor;
+    public static double mediaPares(int[] vetor) {
+        int soma = 0, numPares = 0;
+
+        for (int count = 0; count < vetor.length; count++) {
+            if (vetor[count] % 2 == 0) {
+                soma = soma + vetor[count];
+                numPares++;
+            }
+        }
+        if (numPares > 0) {
+            return (double) soma / numPares;
+        } else {
+            return 0;
+        }
+    }
+
+    // 6. Calcular o percentual dos números ímpares armazenados no vetor;
 
     // 7. Função que calcula a média centralizada dos números armazenados no vetor
     public static double mediaCentralizada(int[] vetor) {
