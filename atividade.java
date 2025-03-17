@@ -68,6 +68,9 @@ public class atividade {
                 case 5:
                     System.out.printf("A média dos números pares do vetor é: %.2f\n\n", mediaPares(vetor));
                     break;
+                case 6:
+                    System.out.printf("O percentual de números ímpares é: %d%% \n", percentualImpar(vetor));
+                    break;
                 case 7:
                     double media = 0;
                     media = mediaCentralizada(vetor);
@@ -178,6 +181,19 @@ public class atividade {
     }
 
     // 6. Calcular o percentual dos números ímpares armazenados no vetor;
+
+    public static int percentualImpar(int[] vetor) {
+        
+          int contadorImpar =0;
+
+          for (int num : vetor) {
+            if (num % 2 != 0) {
+              contadorImpar++;
+            }
+          }
+          return (contadorImpar * 100) / vetor.length;
+        }
+
 
     // 7. Função que calcula a média centralizada dos números armazenados no vetor
     public static double mediaCentralizada(int[] vetor) {
