@@ -43,7 +43,13 @@ public class atividade {
 
             switch (opcao) {
                 case 1:
-                    vetor = gerarVetorAleatorio();
+                    int n = 0;
+                    int m = 0;
+                    System.out.println("Informe o tamanho do vetor: ");
+                    n = read.nextInt();
+                    System.out.println("Informe até que número podera ser inserido dentro do vetor: ");
+                    m = read.nextInt();
+                    vetor = gerarVetorAleatorio(n, m);
                     System.out.println("Vetor gerado!\n");
                     break;
                 case 2:
@@ -69,7 +75,7 @@ public class atividade {
                     System.out.printf("A média dos números pares do vetor é: %.2f\n\n", mediaPares(vetor));
                     break;
                 case 6:
-                    System.out.printf("O percentual de números ímpares é: %d%% \n", percentualImpar(vetor));
+                    System.out.printf("O percentual de números ímpares é: %.2f%% \n\n", percentualImpar(vetor));
                     break;
                 case 7:
                     double media = 0;
@@ -78,7 +84,7 @@ public class atividade {
                     break;
                 case 8:
                     int valorDaSoma = 0;
-                    System.out.print("Informe o valor a ser verificado: ");
+                    System.out.print("Informe um valor que será verificado por meio de uma soma de dois números em posições distintas dentro do vetor: ");
                     valorDaSoma = read.nextInt();
                     System.out.println(posicoesDistintas(vetor, valorDaSoma) + "\n");
                     break;
@@ -105,12 +111,8 @@ public class atividade {
     }
 
     // 1. Função para gerar o vetor aleatoriamente
-    public static int[] gerarVetorAleatorio() {
+    public static int[] gerarVetorAleatorio(int n, int m) {
         Random rand = new Random();
-        int n = 0;
-        int m = 0;
-        n = read.nextInt();
-        m = read.nextInt();
 
         int[] vetor = new int[n];
         for (int i = 0; i < vetor.length; i++) {
@@ -182,18 +184,17 @@ public class atividade {
 
     // 6. Calcular o percentual dos números ímpares armazenados no vetor;
 
-    public static int percentualImpar(int[] vetor) {
-        
-          int contadorImpar =0;
+    public static double percentualImpar(int[] vetor) {
 
-          for (int num : vetor) {
+        double contadorImpar = 0;
+
+        for (int num : vetor) {
             if (num % 2 != 0) {
-              contadorImpar++;
+                contadorImpar++;
             }
-          }
-          return (contadorImpar * 100) / vetor.length;
         }
-
+        return (contadorImpar * 100) / vetor.length;
+    }
 
     // 7. Função que calcula a média centralizada dos números armazenados no vetor
     public static double mediaCentralizada(int[] vetor) {
