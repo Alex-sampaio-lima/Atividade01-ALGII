@@ -35,7 +35,7 @@ public class atividade {
             }
 
             if (opcao == 1) {
-            System.out.printf("Opção Escolhida: %d\n", opcao);
+                System.out.printf("Opção Escolhida: %d\n", opcao);
             }
 
             if (!verificaVetor) {
@@ -222,6 +222,7 @@ public class atividade {
         int qtdMaiorEncontrado = 0;
         int qtdMenorEncontrado = 0;
         int countNumeroValidos = 0;
+        int[] novoVetor = new int[vetor.length];
 
         for (int i = 0; i < vetor.length; i++) {
             if (vetor[i] > maiorNumero) {
@@ -233,9 +234,13 @@ public class atividade {
         }
 
         for (int i = 0; i < vetor.length; i++) {
-            if (vetor[i] == maiorNumero) {
-                if (vetor[i] == maiorNumero) {
-                    vetor[i] = 0;
+            novoVetor[i] = vetor[i];
+        }
+
+        for (int i = 0; i < vetor.length; i++) {
+            if (novoVetor[i] == maiorNumero) {
+                if (novoVetor[i] == maiorNumero) {
+                    novoVetor[i] = 0;
                     qtdMaiorEncontrado++;
                 }
                 if (qtdMaiorEncontrado == 2) {
@@ -244,11 +249,11 @@ public class atividade {
             }
         }
 
-        for (int i = 0; i < vetor.length; i++) {
+        for (int i = 0; i < novoVetor.length; i++) {
 
-            if (vetor[i] == menorNumero) {
-                if (vetor[i] == menorNumero) {
-                    vetor[i] = 0;
+            if (novoVetor[i] == menorNumero) {
+                if (novoVetor[i] == menorNumero) {
+                    novoVetor[i] = 0;
                     qtdMenorEncontrado++;
                 }
             }
@@ -258,7 +263,7 @@ public class atividade {
 
         }
 
-        for (int item : vetor) {
+        for (int item : novoVetor) {
             soma += item;
             if (item != 0) {
                 countNumeroValidos++;
